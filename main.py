@@ -80,18 +80,21 @@ for line in lines:
         temp = re.sub('(?<=\d)\s', '', temp)
         temp = re.sub('(?<=0)\*', '', temp)
         temp = re.sub('_', '-1', temp)
- 
+        #Разбитие строки на подстроки
         tmp_split = temp.split(';')
         if len(tmp_split) == 6:
             tmp_split.pop(0)
-
+        #Извлечение и обработка (удаление "лишних" символов) данных из первого столбца
         country_name = tmp_split[0]
         country_name = re.sub('.*\s\s', '', country_name)
-   
+     
+        #Извлечение данных из оставшихся столбцов. Данные из этих столбцов должны иметь числовое значение (прочерк можно заменить на -1).
+        #Некоторые строки содержат пробелы в виде символа '\xa0'.
         col1_val = tmp_split[1]
         col2_val = tmp_split[2]
         col3_val = tmp_split[3]
         col4_val = tmp_split[4]
+        # Запись извлеченных данных в словарь
         result_dct[country_name] = [0, 0, 0, 0]
         result_dct[country_name][0] = int(col1_val)
         result_dct[country_name][1] = int(col2_val)
