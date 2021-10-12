@@ -80,14 +80,14 @@ for line in lines:
         temp = re.sub('(?<=\d)\s', '', temp)
         temp = re.sub('(?<=0)\*', '', temp)
         temp = re.sub('_', '-1', temp)
-        # print(temp)
+ 
         tmp_split = temp.split(';')
         if len(tmp_split) == 6:
             tmp_split.pop(0)
-        # print(tmp_split)
+
         country_name = tmp_split[0]
         country_name = re.sub('.*\s\s', '', country_name)
-        # print(country_name)
+   
         col1_val = tmp_split[1]
         col2_val = tmp_split[2]
         col3_val = tmp_split[3]
